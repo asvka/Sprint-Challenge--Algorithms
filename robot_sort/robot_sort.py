@@ -92,12 +92,26 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    # Bubble sort?
+    # Draw this out like a BST? Visualize!
+    # Sorting this out conventionally like an array has no effect
+
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        for i in range(len(self._list) - 1):
+            while self.can_move_right():
+                self.move_right()
+
+            while self.can_move_left():
+                self.swap_item()
+                self.move_left()
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    self.set_light_on()
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+
+
 
 
 if __name__ == "__main__":
